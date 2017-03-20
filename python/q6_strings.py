@@ -8,7 +8,7 @@ def donuts(count):
     form 'Number of donuts: <count>', where <count> is the number
     passed in. However, if the count is 10 or more, then use the word
     'many' instead of the actual count.
-
+    
     >>> donuts(4)
     'Number of donuts: 4'
     >>> donuts(9)
@@ -18,7 +18,17 @@ def donuts(count):
     >>> donuts(99)
     'Number of donuts: many'
     """
+    str_return = 'Number of donuts:'
+    if  count < 10 :
+        return str_return + str(count)
+    else:
+        return str_return +' many'
+    
     raise NotImplementedError
+donuts(4)
+donuts(9)
+donuts(10)
+donuts(99) 
 
 
 def both_ends(s):
@@ -37,7 +47,13 @@ def both_ends(s):
     >>> both_ends('xyz')
     'xyyz'
     """
+    if len(s) > 2:
+        return s[0:2] + s[-2:]
+    else:
+        return ''
     raise NotImplementedError
+    
+both_ends('a')    
 
 
 def fix_start(s):
@@ -56,8 +72,10 @@ def fix_start(s):
     >>> fix_start('donut')
     'donut'
     """
+    return s[0] + s[1:].replace(s[0],'*')
     raise NotImplementedError
-
+    
+fix_start('donut')
 
 def mix_up(a, b):
     """
@@ -74,8 +92,10 @@ def mix_up(a, b):
     >>> mix_up('pezzy', 'firm')
     'fizzy perm'
     """
+    return a.replace(a[0:2],b[0:2]) + ' ' + b.replace(b[0:2],a[0:2])
     raise NotImplementedError
-
+    
+mix_up('dog', 'dinner') 
 
 def verbing(s):
     """
@@ -91,8 +111,15 @@ def verbing(s):
     >>> verbing('do')
     'do'
     """
+    if len(s) < 3:
+        return s
+    elif s[-3:] == 'ing':
+        return s + 'ly'
+    else: 
+        return s + 'ing'
     raise NotImplementedError
 
+verbing('do')
 
 def not_bad(s):
     """
@@ -111,8 +138,13 @@ def not_bad(s):
     >>> not_bad("It's bad yet not")
     "It's bad yet not"
     """
+    if s.find('not') < s.find('bad'):
+        return s.replace(s[s.find('not'):], 'good')
+    else:
+        return s
     raise NotImplementedError
-
+    
+not_bad("It's bad yet not")
 
 def front_back(a, b):
     """
@@ -130,4 +162,9 @@ def front_back(a, b):
     >>> front_back('Kitten', 'Donut')
     'KitDontenut'
     """
+    hlen_a, hlen_b = (len(a)+1)//2,  (len(b)+1)//2
+    
+    return a[:hlen_a] + b[:hlen_b] + a[hlen_a:] + b[hlen_b:]
     raise NotImplementedError
+    
+front_back('abcd', 'xy')
