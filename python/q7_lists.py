@@ -107,4 +107,22 @@ def linear_merge(list1, list2):
     >>> linear_merge(['aa', 'aa'], ['aa', 'bb', 'bb'])
     ['aa', 'aa', 'aa', 'bb', 'bb']
     """
+    result = []
+    i,j = 0,0
+    l1, l2 = len(list1),len(list2)
+    total = l1 + l2
+    while len(result) != total:
+        if i == l1:
+            result += list2[j:]
+        elif j == l2:
+            result += list1[1:]  
+        elif list1[i] < list2[j]:   
+            result.append(list1[i])
+            i += 1
+        else: 
+            result.append(list2[j])
+            j += 1
+    return result    
     raise NotImplementedError
+    
+linear_merge(['aa', 'xx'], ['bb', 'cc', 'zz'])    
