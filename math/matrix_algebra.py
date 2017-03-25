@@ -104,4 +104,3 @@ print (B.dot(A))
 # In[48]:
 
 print ('B.dot(A.T) not defined')
-
